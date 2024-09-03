@@ -50,7 +50,10 @@ const Dashboard = () => {
                                 </div>
                                 <div className='flex gap-x-2 items-center'>
                                     <h4 className="text-md font-semibold">Completion Status:</h4>
-                                    <p>{"In Progress"}</p>
+                                    <select className="form-select border rounded-md">
+                                        <option value="in-progress" selected>In Progress</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
                                 </div>
                             </div>
                         ))}

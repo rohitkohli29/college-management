@@ -43,6 +43,12 @@ const EnrollModal = () => {
         if(!enroll_courses){
             localStorage.setItem('enroll_courses',JSON.stringify([selectedCourse!]))
         }else{
+            const course = enroll_courses.filter((course) => course.courseId == selectedCourse?.courseId);
+            if(course.length != 0){
+                alert('Already Enrolled !');
+                hideModal();
+                return;
+            }
             localStorage.setItem('enroll_courses',JSON.stringify([...enroll_courses,selectedCourse!]));
         }
 
