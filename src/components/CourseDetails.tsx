@@ -10,7 +10,7 @@ const CourseDetails = () => {
   const { courses } = useSelector((state: RootState) => state.courses);
   const { name, id } = useParams();
   const navigate = useNavigate();
-  const { showModal } = useEnroll();
+  const { showModal ,changeSelectedCourse} = useEnroll();
 
   useEffect(() => {
     if (!name || !id) {
@@ -90,7 +90,18 @@ const CourseDetails = () => {
 
           {/* enroll button */}
           <div className='sticky shrink-0 top-3 flex-1 h-96 border rounded flex border-gray-500 items-center justify-center'>
-                <button onClick={showModal} className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition-colors duration-300">Enroll now</button>
+            <button onClick={() => {
+              changeSelectedCourse({
+                courseName: course.name,
+                courseMentor: course.instructor,
+                courseId: course.id,
+                courseImage: course.thumbnail,
+                enrollmentDate: Date.now(),
+                completionStatus: {}
+              })
+
+              showModal();
+            }} className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition-colors duration-300">Enroll now</button>
           </div>
         </div>
       </div>
